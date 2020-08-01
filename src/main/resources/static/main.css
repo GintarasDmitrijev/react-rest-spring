@@ -1,0 +1,37 @@
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+#row {
+     background: grey;
+     width: 100%;
+     margin: 0;
+     float: left;
+}
+
+#left {
+     background: #ccc;
+     display:inline-block;
+     width:100px;
+     margin-right:5px;
+}
+
+#center {
+     background: #ccc;
+     display:inline-block;
+     width:100px;
+}
+
+#right {
+     background: #ccc;
+     display:inline-block;
+     width:100px;
+     margin-left:5px;
+}

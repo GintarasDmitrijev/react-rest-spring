@@ -28,10 +28,10 @@ public class HomeController {
     }
 
     @PostMapping("/post")
-    ResponseEntity<List<Product>> handlePost(@RequestBody Questionnaire questionnaire) throws URISyntaxException {
+    public ResponseEntity<List<Product>> handlePost(@RequestBody Questionnaire questionnaire) throws URISyntaxException {
         return new ResponseEntity<List<Product>>(UtilsKt.determinePossibleProduct(questionnaire)
                 .stream().map(name -> new Product(name, UtilsKt.resolveProductCover(name)))
-                .collect(Collectors.toList()), HttpStatus.OK);
+                .collect(Collectors.toList()), HttpStatus.CREATED);
     }
 
 }

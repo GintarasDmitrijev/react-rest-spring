@@ -4,7 +4,9 @@ import com.gintaras.seb.model.Questionnaire
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-/*
+/**
+ * Unit test for {@link com.gintaras.seb.utils.kt}
+ *
  * @created 03/08/2020 - 13:57
  * @author gintaras
  */

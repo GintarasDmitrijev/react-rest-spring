@@ -1,6 +1,7 @@
 package com.gintaras.seb
 
 import com.gintaras.seb.model.Questionnaire
+import org.springframework.util.ObjectUtils
 
 const val AGE_0_17 = "0-17"
 const val AGE_18_64 = "18-64"
@@ -54,12 +55,12 @@ fun determinePossibleProduct(questionnaire: Questionnaire) : List<String> =
         when {
 
             //Junior Saver Account
-            questionnaire.age.equals(AGE_0_17) -> listOf(PRODUCT_JUNIOR_SAVER_ACCOUNT)
+            ObjectUtils.nullSafeEquals(questionnaire.age, AGE_0_17) -> listOf(PRODUCT_JUNIOR_SAVER_ACCOUNT)
             //Senior Account
-            questionnaire.age.equals(AGE_65_)
+            ObjectUtils.nullSafeEquals(questionnaire.age, AGE_65_)
                     && questionnaire.income.equals(INCOME_0) -> listOf(PRODUCT_SENIOR_ACCOUNT
                                                                 ,PRODUCT_DEBIT_CARD)
-            questionnaire.age.equals(AGE_65_)
+            ObjectUtils.nullSafeEquals(questionnaire.age, AGE_65_)
                     && questionnaire.income.equals(INCOME_40001_) -> listOf(
                      PRODUCT_SENIOR_ACCOUNT
                     ,PRODUCT_CURRENT_ACCOUNT
@@ -70,21 +71,21 @@ fun determinePossibleProduct(questionnaire: Questionnaire) : List<String> =
             questionnaire.income in listOf<String>(INCOME_12001_40000)
                     && questionnaire.age in AGE_GT_17_LIST -> listOf(PRODUCT_CURRENT_ACCOUNT)
 
-            //Current Account +
+            //Current Account Plus
             questionnaire.income in listOf<String>(INCOME_1_12000,INCOME_12001_40000)
                     && questionnaire.age in AGE_GT_17_LIST -> listOf(PRODUCT_CURRENT_ACCOUNT
                                                                     ,PRODUCT_DEBIT_CARD)
             //Debit Card
-            questionnaire.income.equals(INCOME_0)
+            ObjectUtils.nullSafeEquals(questionnaire.income, INCOME_0)
                     && questionnaire.age in AGE_GT_17_LIST -> listOf(PRODUCT_DEBIT_CARD)
 
             //Current Account + Current Account Plus + Gold Credit Card
-            questionnaire.income.equals(INCOME_40001_)
+            ObjectUtils.nullSafeEquals(questionnaire.income, INCOME_40001_)
                     && questionnaire.age in AGE_GT_17_LIST -> listOf(PRODUCT_CURRENT_ACCOUNT
                                                                     ,PRODUCT_CURRENT_ACCOUNT_PLUS
                                                                     ,PRODUCT_GOLD_CREDIT_CARD)
             //Student Account
-            questionnaire.student.equals(STUDENT_YES)
+            ObjectUtils.nullSafeEquals(questionnaire.student, STUDENT_YES)
                     && questionnaire.age in AGE_GT_17_LIST -> listOf(PRODUCT_STUDENT_ACCOUNT)
 
 
